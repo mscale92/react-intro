@@ -1,5 +1,8 @@
 var React = require('react');
 var ImageCaption = require('./ImageCaption')
+var Layout = require('./Layout')
+var GuessTheNumber = require('./GuessTheNumber')
+
 
 var imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -25,6 +28,17 @@ var App = React.createClass({
         <div>
           {imageList.map(this.renderImage)}
         </div>
+        <hr/>
+        <h2>Testing Layout</h2>
+        <Layout children={
+          <div>
+            <h2>About Us</h2>
+            <p>We are <a href="https://facebook.github.io/react/" target="_blank">React</a> Developers</p>
+          </div>
+        }/>
+        <hr/>
+        <h2>Guess a number between 1 and 20</h2>
+        <GuessTheNumber numberToGuess= {15} />
       </main>
     );
   }

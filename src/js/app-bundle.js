@@ -21428,6 +21428,8 @@
 	
 	var React = __webpack_require__(1);
 	var ImageCaption = __webpack_require__(173);
+	var Layout = __webpack_require__(174);
+	var GuessTheNumber = __webpack_require__(175);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21463,7 +21465,40 @@
 	        'div',
 	        null,
 	        imageList.map(this.renderImage)
-	      )
+	      ),
+	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Testing Layout'
+	      ),
+	      React.createElement(Layout, { children: React.createElement(
+	          'div',
+	          null,
+	          React.createElement(
+	            'h2',
+	            null,
+	            'About Us'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'We are ',
+	            React.createElement(
+	              'a',
+	              { href: 'https://facebook.github.io/react/', target: '_blank' },
+	              'React'
+	            ),
+	            ' Developers'
+	          )
+	        ) }),
+	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Guess a number between 1 and 20'
+	      ),
+	      React.createElement(GuessTheNumber, { numberToGuess: 15 })
 	    );
 	  }
 	});
@@ -21492,6 +21527,7 @@
 	    //also a string
 	  },
 	  render: function render() {
+	
 	    return React.createElement(
 	      'figure',
 	      null,
@@ -21507,6 +21543,103 @@
 	
 	module.exports = ImageCaption;
 	// export our component
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var Layout = React.createClass({
+	  displayName: "Layout",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "layout" },
+	      React.createElement(
+	        "nav",
+	        { className: "main-nav" },
+	        React.createElement(
+	          "ul",
+	          null,
+	          React.createElement(
+	            "li",
+	            null,
+	            React.createElement(
+	              "a",
+	              { href: "/" },
+	              "Home"
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "main",
+	        null,
+	        this.props.children
+	      ),
+	      React.createElement(
+	        "footer",
+	        null,
+	        "Copywhat 2016 Kittens"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Layout;
+	// export our component
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var GuessTheNumber = React.createClass({
+	    displayName: "GuessTheNumber",
+	
+	    propTypes: {
+	        numberToGuess: React.PropTypes.number.isRequired
+	    },
+	    _handleButtonClick: function _handleButtonClick() {
+	        var guess = this.refs.userGuess.value;
+	        var num = this.props.numberToGuess;
+	
+	        console.log(guess, "guess");
+	        console.log(num, "number");
+	
+	        if (num == guess) {
+	            //double equal, not triple
+	            alert("yes you win!");
+	        } else if (num > guess) {
+	            alert("nope, too low");
+	        } else if (num < guess) {
+	            alert("nope, too high");
+	        } else {
+	            alert("uh oh");
+	        }
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement("input", { type: "text", ref: "userGuess" }),
+	            React.createElement(
+	                "button",
+	                { onClick: this._handleButtonClick },
+	                "Guess!"
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = GuessTheNumber;
 
 /***/ }
 /******/ ]);

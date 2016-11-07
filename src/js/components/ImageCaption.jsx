@@ -12,6 +12,7 @@ var ImageCaption = React.createClass({
                 //also a string
   },
   render: function() {
+
     return (
       <figure>
         <img src={this.props.source}/>
