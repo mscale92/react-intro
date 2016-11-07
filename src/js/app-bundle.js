@@ -21429,9 +21429,14 @@
 	var React = __webpack_require__(1);
 	var ImageCaption = __webpack_require__(173);
 	
+	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
+	
 	var App = React.createClass({
 	  displayName: 'App',
 	
+	  renderImage: function renderImage(obj) {
+	    return React.createElement(ImageCaption, { source: obj.source, text: obj.text });
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'main',
@@ -21447,8 +21452,18 @@
 	        null,
 	        'Testing image'
 	      ),
-	      React.createElement(ImageCaption, { source: 'http://placekitten.com/g/210/210', text: 'This is a kittenz!' }),
-	      React.createElement('hr', null)
+	      React.createElement(ImageCaption, { source: 'http://placekitten.com/g/210/210', text: 'Mew!' }),
+	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Triple Threat'
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        imageList.map(this.renderImage)
+	      )
 	    );
 	  }
 	});
