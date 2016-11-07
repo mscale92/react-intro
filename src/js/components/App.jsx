@@ -42,6 +42,7 @@ var App = React.createClass({
         <h2>Guess a number between 1 and 20</h2>
         <GuessTheNumber numberToGuess= {15} />
         <hr/>
+        <h2> Click Counter! </h2>
         <YouClicked/>
       </main>
     );

@@ -2,11 +2,22 @@ var React = require('react');
 
 var YouClicked = React.createClass({
     _handleButtonClick: function(){
-        console.log(this.state.timesClicked + 1)
+        
+        var clickCount = this.state.timesClicked + 1;
+        if(clickCount == 1){
+            this.state.message = "You've clicked me once"
+        }
+        else if(clickCount == 2){
+            this.state.message = "You've clicked me twice"
+        }
+        else{
+            this.state.message = "You've clicked me " + clickCount + " times"
+        }
+        
         
         this.setState({
-            timesClicked: this.state.timesClicked + 1,
-            message: "wow you've clicked me " + (this.state.timesClicked + 1)
+            timesClicked: clickCount,
+            message: this.state.message
         })
         
         
@@ -22,8 +33,6 @@ var YouClicked = React.createClass({
         return(
             <div>
                 <button onClick={this._handleButtonClick}>Click Me</button>
-                
-                <p>{this.state.timesClicked}</p>
                 <p>{this.state.message}</p>
                 
             </div>

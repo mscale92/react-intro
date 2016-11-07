@@ -21501,6 +21501,11 @@
 	      ),
 	      React.createElement(GuessTheNumber, { numberToGuess: 15 }),
 	      React.createElement('hr', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        ' Click Counter! '
+	      ),
 	      React.createElement(YouClicked, null)
 	    );
 	  }
@@ -21656,11 +21661,19 @@
 	    displayName: "YouClicked",
 	
 	    _handleButtonClick: function _handleButtonClick() {
-	        console.log(this.state.timesClicked + 1);
+	
+	        var clickCount = this.state.timesClicked + 1;
+	        if (clickCount == 1) {
+	            this.state.message = "You've clicked me once";
+	        } else if (clickCount == 2) {
+	            this.state.message = "You've clicked me twice";
+	        } else {
+	            this.state.message = "You've clicked me " + clickCount + " times";
+	        }
 	
 	        this.setState({
-	            timesClicked: this.state.timesClicked + 1,
-	            message: "wow you've clicked me " + (this.state.timesClicked + 1)
+	            timesClicked: clickCount,
+	            message: this.state.message
 	        });
 	    },
 	    getInitialState: function getInitialState() {
@@ -21677,11 +21690,6 @@
 	                "button",
 	                { onClick: this._handleButtonClick },
 	                "Click Me"
-	            ),
-	            React.createElement(
-	                "p",
-	                null,
-	                this.state.timesClicked
 	            ),
 	            React.createElement(
 	                "p",
