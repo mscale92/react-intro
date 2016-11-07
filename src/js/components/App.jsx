@@ -11,7 +11,7 @@ var imageList = [
 
 var App = React.createClass({
   renderImage: function(obj){
-    return <ImageCaption source = {obj.source} text = {obj.text} />;
+    return <ImageCaption key={obj.id} source = {obj.source} text = {obj.text} />;
     },
   render: function() {
     return (

@@ -21435,7 +21435,7 @@
 	  displayName: 'App',
 	
 	  renderImage: function renderImage(obj) {
-	    return React.createElement(ImageCaption, { source: obj.source, text: obj.text });
+	    return React.createElement(ImageCaption, { key: obj.id, source: obj.source, text: obj.text });
 	  },
 	  render: function render() {
 	    return React.createElement(
