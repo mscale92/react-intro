@@ -21430,6 +21430,7 @@
 	var ImageCaption = __webpack_require__(173);
 	var Layout = __webpack_require__(174);
 	var GuessTheNumber = __webpack_require__(175);
+	var YouClicked = __webpack_require__(176);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21498,7 +21499,9 @@
 	        null,
 	        'Guess a number between 1 and 20'
 	      ),
-	      React.createElement(GuessTheNumber, { numberToGuess: 15 })
+	      React.createElement(GuessTheNumber, { numberToGuess: 15 }),
+	      React.createElement('hr', null),
+	      React.createElement(YouClicked, null)
 	    );
 	  }
 	});
@@ -21640,6 +21643,56 @@
 	});
 	
 	module.exports = GuessTheNumber;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var YouClicked = React.createClass({
+	    displayName: "YouClicked",
+	
+	    _handleButtonClick: function _handleButtonClick() {
+	        console.log(this.state.timesClicked + 1);
+	
+	        this.setState({
+	            timesClicked: this.state.timesClicked + 1,
+	            message: "wow you've clicked me " + (this.state.timesClicked + 1)
+	        });
+	    },
+	    getInitialState: function getInitialState() {
+	        return {
+	            timesClicked: 0,
+	            message: "You have not clicked yet!"
+	        };
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "button",
+	                { onClick: this._handleButtonClick },
+	                "Click Me"
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                this.state.timesClicked
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                this.state.message
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = YouClicked;
 
 /***/ }
 /******/ ]);

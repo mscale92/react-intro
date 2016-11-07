@@ -2,6 +2,8 @@ var React = require('react');
 var ImageCaption = require('./ImageCaption')
 var Layout = require('./Layout')
 var GuessTheNumber = require('./GuessTheNumber')
+var YouClicked = require("./YouClicked")
+
 
 
 var imageList = [
@@ -39,6 +41,8 @@ var App = React.createClass({
         <hr/>
         <h2>Guess a number between 1 and 20</h2>
         <GuessTheNumber numberToGuess= {15} />
+        <hr/>
+        <YouClicked/>
       </main>
     );
   }
