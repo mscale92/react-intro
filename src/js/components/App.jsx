@@ -6,7 +6,8 @@ var YouClicked = require("./YouClicked");
 var CharacterCounter = require("./CharacterCounter");
 var CharacterLimit = require("./CharacterLimit");
 var NumberGuessing = require("./NumberGuessing");
-var GithubProfile = require("./GithubProfile");
+var GithubUser = require("./GithubProfile");
+var GithubSearch = require("./GithubSearch")
 
 var imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -57,7 +58,11 @@ var App = React.createClass({
         <hr/>
         <br/>
         <h2>Github Profile</h2>
-        <GithubProfile/>
+        <GithubUser username="mscale92"/>
+        <br/>
+        <hr/>
+        <GithubSearch/>
+        <br/>
       </main>
     );
   }

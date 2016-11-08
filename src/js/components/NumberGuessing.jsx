@@ -90,7 +90,7 @@ var NumberGuessing = React.createClass({
         else{
             return(
                 <div>
-                    <h2>Guess a number between 1 and 10</h2>
+                    <h2>Guess a number between 1 and 100</h2>
                     <h3>{this.state.guesses.length == 4 ? "Last try" : "Remaining tries " + (5 - this.state.guesses.length)}</h3>
                         
                     <h2>{this.state.stat ? "Too " + this.state.stat : null}</h2>
