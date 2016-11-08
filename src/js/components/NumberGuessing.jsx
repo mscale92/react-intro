@@ -55,14 +55,22 @@ var NumberGuessing = React.createClass({
             }
         }
         else{
-            this.setState({
-                gameStatus: 'lose'
-            })
+            if(guess == num){
+                this.setState({
+                    gameStatus: 'win'
+                })
+            }
+            else{
+                this.setState({
+                    gameStatus: 'lose'
+                })
+            }
+            
         }
         
     },
     render: function(){
-        // console.log(this.state.numberToGuess)
+        console.log(this.state.numberToGuess)
         
         if(!this.state.gameStatus){
             return null;
@@ -83,7 +91,7 @@ var NumberGuessing = React.createClass({
             return(
                 <div>
                     <h2>Guess a number between 1 and 10</h2>
-                    <h3>{"Remaining tries " + (5 - this.state.guesses.length)}</h3>
+                    <h3>{this.state.guesses.length == 4 ? "Last try" : "Remaining tries " + (5 - this.state.guesses.length)}</h3>
                         
                     <h2>{this.state.stat ? "Too " + this.state.stat : null}</h2>
                         

@@ -21434,6 +21434,7 @@
 	var CharacterCounter = __webpack_require__(177);
 	var CharacterLimit = __webpack_require__(178);
 	var NumberGuessing = __webpack_require__(179);
+	var GithubProfile = __webpack_require__(180);
 	
 	var imageList = [{ id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!" }, { id: 43, source: "https://facebook.github.io/react/img/logo.svg", text: "React Logo" }, { id: 44, source: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif", text: "Mind Blown!" }];
 	
@@ -21526,7 +21527,14 @@
 	      React.createElement(CharacterLimit, { limit: 120 }),
 	      React.createElement('hr', null),
 	      React.createElement(NumberGuessing, null),
-	      React.createElement('hr', null)
+	      React.createElement('hr', null),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Github Profile'
+	      ),
+	      React.createElement(GithubProfile, null)
 	    );
 	  }
 	});
@@ -21885,13 +21893,19 @@
 	                });
 	            }
 	        } else {
-	            this.setState({
-	                gameStatus: 'lose'
-	            });
+	            if (guess == num) {
+	                this.setState({
+	                    gameStatus: 'win'
+	                });
+	            } else {
+	                this.setState({
+	                    gameStatus: 'lose'
+	                });
+	            }
 	        }
 	    },
 	    render: function render() {
-	        // console.log(this.state.numberToGuess)
+	        console.log(this.state.numberToGuess);
 	
 	        if (!this.state.gameStatus) {
 	            return null;
@@ -21931,7 +21945,7 @@
 	                    React.createElement(
 	                        'h3',
 	                        null,
-	                        "Remaining tries " + (5 - this.state.guesses.length)
+	                        this.state.guesses.length == 4 ? "Last try" : "Remaining tries " + (5 - this.state.guesses.length)
 	                    ),
 	                    React.createElement(
 	                        'h2',
@@ -21960,6 +21974,24 @@
 	});
 	
 	module.exports = NumberGuessing;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var GithubProfile = React.createClass({
+	    displayName: 'GithubProfile',
+	
+	    render: function render() {
+	        return null;
+	    }
+	});
+	
+	module.exports = GithubProfile;
 
 /***/ }
 /******/ ]);

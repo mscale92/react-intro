@@ -1,11 +1,12 @@
 var React = require('react');
-var ImageCaption = require('./ImageCaption')
-var Layout = require('./Layout')
-var GuessTheNumber = require('./GuessTheNumber')
-var YouClicked = require("./YouClicked")
-var CharacterCounter = require("./CharacterCounter")
-var CharacterLimit = require("./CharacterLimit")
-var NumberGuessing = require("./NumberGuessing")
+var ImageCaption = require('./ImageCaption');
+var Layout = require('./Layout');
+var GuessTheNumber = require('./GuessTheNumber');
+var YouClicked = require("./YouClicked");
+var CharacterCounter = require("./CharacterCounter");
+var CharacterLimit = require("./CharacterLimit");
+var NumberGuessing = require("./NumberGuessing");
+var GithubProfile = require("./GithubProfile");
 
 var imageList = [
   {id: 42, source: "http://placekitten.com/g/210/210", text: "Hello kittenz!"},
@@ -54,6 +55,9 @@ var App = React.createClass({
         <hr/>
         <NumberGuessing/>
         <hr/>
+        <br/>
+        <h2>Github Profile</h2>
+        <GithubProfile/>
       </main>
     );
   }
