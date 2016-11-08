@@ -19,22 +19,29 @@ var YouClicked = React.createClass({
             timesClicked: clickCount,
             message: this.state.message
         })
-        
-        
-        
+  
+    },
+    _resetBtn: function(){
+        this.setState({
+            timesClicked: this.state.timesClicked = 0,
+            timesReset: this.state.timesReset + 1,
+            message: "Click to start counting again"
+        })
     },
     getInitialState: function(){
         return {
             timesClicked: 0,
-            message: "You have not clicked yet!"
+            message: "You have not clicked yet!",
+            timesReset: 0
         }
     },
     render: function(){
         return(
             <div>
                 <button onClick={this._handleButtonClick}>Click Me</button>
+                <button onClick={this._resetBtn}>Reset</button>
                 <p>{this.state.message}</p>
-                
+                <p>{this.state.timesReset > 0 ? "You've reset " + this.state.timesReset : null}</p>
             </div>
         );
     }

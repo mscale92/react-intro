@@ -21676,10 +21676,18 @@
 	            message: this.state.message
 	        });
 	    },
+	    _resetBtn: function _resetBtn() {
+	        this.setState({
+	            timesClicked: this.state.timesClicked = 0,
+	            timesReset: this.state.timesReset + 1,
+	            message: "Click to start counting again"
+	        });
+	    },
 	    getInitialState: function getInitialState() {
 	        return {
 	            timesClicked: 0,
-	            message: "You have not clicked yet!"
+	            message: "You have not clicked yet!",
+	            timesReset: 0
 	        };
 	    },
 	    render: function render() {
@@ -21692,9 +21700,19 @@
 	                "Click Me"
 	            ),
 	            React.createElement(
+	                "button",
+	                { onClick: this._resetBtn },
+	                "Reset"
+	            ),
+	            React.createElement(
 	                "p",
 	                null,
 	                this.state.message
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                this.state.timesReset > 0 ? "You've reset " + this.state.timesReset : null
 	            )
 	        );
 	    }
