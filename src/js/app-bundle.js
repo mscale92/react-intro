@@ -21757,12 +21757,12 @@
 	        return React.createElement(
 	            "div",
 	            null,
-	            React.createElement("input", { type: "text", onInput: this._handleInput }),
 	            React.createElement(
 	                "p",
 	                null,
 	                this.state.currentInput
-	            )
+	            ),
+	            React.createElement("textarea", { rows: "10", cols: "30", onInput: this._handleInput })
 	        );
 	    }
 	});

@@ -19,8 +19,8 @@ var CharacterCounter = React.createClass({
         
         return(
             <div>
-                <input type="text" onInput={this._handleInput}/>
                 <p>{this.state.currentInput}</p>
+                <textarea rows="10" cols="30" onInput={this._handleInput}/>
             </div>
         )
     }
