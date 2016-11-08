@@ -3,7 +3,7 @@ var ImageCaption = require('./ImageCaption')
 var Layout = require('./Layout')
 var GuessTheNumber = require('./GuessTheNumber')
 var YouClicked = require("./YouClicked")
-
+var CharacterCounter = require("./CharacterCounter")
 
 
 var imageList = [
@@ -44,6 +44,9 @@ var App = React.createClass({
         <hr/>
         <h2> Click Counter! </h2>
         <YouClicked/>
+        <hr/>
+        <h2>CharacterCounter</h2>
+        <CharacterCounter/>
       </main>
     );
   }
