@@ -21525,7 +21525,8 @@
 	      ),
 	      React.createElement(CharacterLimit, { limit: 120 }),
 	      React.createElement('hr', null),
-	      React.createElement(NumberGuessing, null)
+	      React.createElement(NumberGuessing, null),
+	      React.createElement('hr', null)
 	    );
 	  }
 	});
@@ -21844,42 +21845,117 @@
 	    _startGame: function _startGame() {
 	        this.setState({
 	            gameStatus: 'playing',
-	            numberToGuess: 4,
-	            guesses: []
+	            numberToGuess: Math.floor(Math.random() * 101),
+	            guesses: [],
+	            stat: ""
 	        });
 	        // start the game
 	    },
 	    componentDidMount: function componentDidMount() {
 	        return this._startGame();
 	    },
+	    _guess: function _guess() {
+	        var guess = this.refs.userGuess.value;
+	        var num = this.state.numberToGuess;
 	
+	        var updatedGuesses = this.state.guesses;
+	        updatedGuesses.push(guess);
+	        // update our array with another array
+	        // if we set guesses to push itself
+	        //it returns the push aka gives the value of the
+	        //length, not the new array
+	        this.setState({
+	            guesses: updatedGuesses
+	        });
+	        // always update the guesses array since it is
+	        // our limit
+	
+	        if (this.state.guesses.length < 5) {
+	            if (guess == num) {
+	                this.setState({
+	                    gameStatus: 'win'
+	                });
+	            } else if (guess > num) {
+	                this.setState({
+	                    stat: "HIGH"
+	                });
+	            } else {
+	                this.setState({
+	                    stat: "LOW"
+	                });
+	            }
+	        } else {
+	            this.setState({
+	                gameStatus: 'lose'
+	            });
+	        }
+	    },
 	    render: function render() {
-	        console.log(this._startGame);
-	        // if(!this.state.gameStatus){
-	        //     return null;
-	        // }
-	        return React.createElement(
-	            'div',
-	            null,
-	            React.createElement(
-	                'h2',
+	        // console.log(this.state.numberToGuess)
+	
+	        if (!this.state.gameStatus) {
+	            return null;
+	        } else if (this.state.gameStatus == 'win' || this.state.gameStatus == 'lose') {
+	            // render something completely different if they win or lose
+	            return React.createElement(
+	                'div',
 	                null,
-	                'Guess a number between 1 and 10'
-	            ),
-	            React.createElement(
-	                'p',
-	                null,
-	                '"Remaining tries " ',
-	                this.state.gameStatus
-	            ),
-	            React.createElement('p', null),
-	            React.createElement('input', { type: 'text', ref: 'userGuess' }),
-	            React.createElement(
-	                'button',
-	                { onClick: this._handleButtonClick },
-	                'Guess!'
-	            )
-	        );
+	                React.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.gameStatus == 'win' ? "You won!" : null
+	                ),
+	                React.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.gameStatus == 'lose' ? "You lost! the number was " + this.state.numberToGuess : null
+	                ),
+	                React.createElement(
+	                    'button',
+	                    { onClick: this._startGame },
+	                    'New Game!'
+	                )
+	            );
+	            // either way start a new game
+	        }
+	        // This renders the game
+	        else {
+	                return React.createElement(
+	                    'div',
+	                    null,
+	                    React.createElement(
+	                        'h2',
+	                        null,
+	                        'Guess a number between 1 and 10'
+	                    ),
+	                    React.createElement(
+	                        'h3',
+	                        null,
+	                        "Remaining tries " + (5 - this.state.guesses.length)
+	                    ),
+	                    React.createElement(
+	                        'h2',
+	                        null,
+	                        this.state.stat ? "Too " + this.state.stat : null
+	                    ),
+	                    React.createElement(
+	                        'p',
+	                        null,
+	                        this.state.guesses.length > 0 ? "Your guesses " + this.state.guesses.join(',') : null
+	                    ),
+	                    React.createElement('input', { type: 'text', ref: 'userGuess' }),
+	                    React.createElement(
+	                        'button',
+	                        { onClick: this._guess },
+	                        'Guess!'
+	                    )
+	                );
+	                // we use the length of the guesses array to set a limit
+	                // our limit is five, so we tell the user that they have
+	                // x many attempts left, which is five minus the current length
+	                // Give the user a hint as to whether or not their number was higher or
+	                // lower
+	            }
 	    }
 	});
 	

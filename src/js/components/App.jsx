@@ -53,6 +53,7 @@ var App = React.createClass({
         <CharacterLimit limit={120}/>
         <hr/>
         <NumberGuessing/>
+        <hr/>
       </main>
     );
   }
